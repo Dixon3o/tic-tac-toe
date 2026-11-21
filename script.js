@@ -100,6 +100,25 @@ gameController.play(3);
 gameController.play(4);
 gameController.play(5);
 gameController.play(7);
-gameController.play(6);
-gameController.play(8);
-gameController.resetGame();
+
+const cdiv = document.querySelector(".placeForTiles");
+
+const displayController = (function() {
+    let counter = 0;
+    function display(){
+        for(let i = 0; i < 9; i++){
+            let button = document.createElement("button");
+            button.classList.add("tile");
+            button.textContent = gameBoard.getGameboard()[counter];
+            cdiv.appendChild(button);
+            counter++;
+        }
+        counter = 0;
+    }
+
+    return {display};
+
+})();
+
+
+displayController.display();
