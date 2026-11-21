@@ -29,9 +29,10 @@ const winningTiles = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2,
 
 const gameController = (function() {
 
-    const player1 = createPlayer("Player1", "X");
-    const player2 = createPlayer("Player2", "O");
+    const player1 = createPlayer("Player 1", "X");
+    const player2 = createPlayer("Player 2", "O");
     let activePlayer = player1;
+    let gameOver = false;
 
     function switchTurn(){
         if(activePlayer == player1){
@@ -57,6 +58,48 @@ const gameController = (function() {
         return true;
     }
 
-    return {switchTurn, checkWin, isDraw};
+    console.log(gameBoard.getGameboard());
+    console.log("Its now " + activePlayer.getName() + " turn.");
+    
+    function play(index){
+        
+        if(!gameOver && gameBoard.setGameboard(index, activePlayer.getMark())){
+            console.log(gameBoard.getGameboard());
+            if(checkWin()){
+                console.log("Winner is " + activePlayer.getName());
+                gameOver = true;
+            }else if(isDraw()){    
+                console.log("Its draw.");         
+                gameOver = true;   
+            }else{
+                switchTurn();   
+                console.log("Its now " + activePlayer.getName() + " turn.");
+            }
+            
+        }else{
+            console.log("That tile is already picked. Choose another one.");
+        }
+        
+    }
+    function resetGame(){
+            gameOver = false;
+            activePlayer = player1;
+            gameBoard.resetGameboard();
+            console.log("Its now " + activePlayer.getName() + " turn.");
+            console.log(gameBoard.getGameboard());
+        }
+
+    return {play, resetGame};
 
 })();
+
+gameController.play(0);
+gameController.play(1);
+gameController.play(2);
+gameController.play(3);
+gameController.play(4);
+gameController.play(5);
+gameController.play(7);
+gameController.play(6);
+gameController.play(8);
+gameController.resetGame();
