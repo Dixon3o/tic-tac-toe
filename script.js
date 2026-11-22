@@ -71,7 +71,7 @@
             }
             
             if(!gameOver && gameBoard.setGameboard(index, activePlayer.getMark())){
-                console.log(gameBoard.getGameboard());
+
                 if(checkWin()){
                     statusMessage = "Winner is " + activePlayer.getName();
                     gameOver = true;
@@ -91,12 +91,7 @@
             return gameOver;
             
         }
-        /*function resetGame(p1){
-                gameOver = false;
-                activePlayer = player1;
-                gameBoard.resetGameboard();
-                statusMessage = "Its now " + activePlayer.getName() + " turn.";
-            }*/
+
         const getStatusMessage = () => statusMessage;
 
         return {play, getStatusMessage, startGame};
