@@ -11,9 +11,9 @@ A browser-based Tic Tac Toe game built with vanilla JavaScript, HTML, and CSS, o
 
 # Project Structure
 
-├── index.html
-├── style.css
-├── script.js
+├── index.html  
+├── style.css    
+├── script.js    
 └── README.md
 
 # Live demo
