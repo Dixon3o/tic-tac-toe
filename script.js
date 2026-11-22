@@ -30,6 +30,8 @@
     const gameController = (function() {
 
         let statusMessage = "Press on Start to start the game!";
+        let player1, player2, activePlayer;
+        let gameOver = false;
 
         function startGame(name1, name2) {
             player1 = createPlayer(name1 || "Player 1", "X");
